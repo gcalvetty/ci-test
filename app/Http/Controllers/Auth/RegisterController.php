@@ -9,6 +9,10 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+// ---- Add Class 
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
+
 class RegisterController extends Controller
 {
     /*
@@ -50,7 +54,14 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'nombre' => ['required', 'string', 'max:100'],            
+            
+            'celular' => ['required', 'string', 'max:10'],
+            'cedula' => ['required', 'string', 'max:11'],
+            'tipo_Usu' => 'User',
+            'fec_nac' => ['required', 'date'],
+            'cod_ciudad' => ['required', 'string', 'max:100'],
+
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -65,9 +76,32 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'nombre' => $data['nombre'],
+
+            'celular' => $data['celular'],
+            'cedula' => $data['cedula'],
+            'tipo_Usu' => 'User',
+            'fec_nac' => $data['fec_nac'],
+            'cod_ciudad' => $data['cod_ciudad'],
+
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    /**
+     * Reidrect to Admin
+     */
+    public function register(Request $request)
+    {
+       
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard($user);
+
+        return redirect($this->redirectPath());
+    }
+
 }
