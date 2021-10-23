@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call([UserAdmSeeder::class]);
 
         // ---- New 5 Users ----
+        $this->call([UserSeeder::class]);
         User::factory(5)->create();
     }
 }

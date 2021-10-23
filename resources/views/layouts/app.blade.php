@@ -48,6 +48,9 @@
 
                             
                         @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
+                            </li>
                             @can('usu_adm')
                                 @if (Route::has('register'))
                                     <li class="nav-item">
@@ -80,6 +83,13 @@
 
         <main class="py-4">
             @yield('content')
+            
+            @can('usu_adm')
+                @yield('content-adm')
+            @endcan 
+            @can('usu_user')
+                @yield('content-user')
+            @endcan    
         </main>
     </div>
 </body>
