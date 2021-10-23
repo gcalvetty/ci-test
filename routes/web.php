@@ -20,3 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+/*
+ * ---- Edit USER --- 
+ */
+Route::get('/edit-user/{id}', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit-user')->where(['id-user' => '[0-9]+']);

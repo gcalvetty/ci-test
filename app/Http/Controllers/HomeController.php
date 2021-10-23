@@ -31,4 +31,11 @@ class HomeController extends Controller
         ]);
 
     }
+    /**
+     * ---- Edit USER ----
+     */
+
+    public function edit(Request $request){
+        return view('auth.edit');
+    }
 }
