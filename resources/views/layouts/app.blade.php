@@ -6,18 +6,16 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <title>{{ config('app.name', 'TEST CI') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">    
+    <!-- MDBootstrap Datatables  -->    
+    <link href="{{ asset('MDB/css/addons/datatables2.min.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -92,5 +90,19 @@
             @endcan    
         </main>
     </div>
+    @can('usu_adm')
+    <script type="text/javascript" src="/MDB/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/MDB/js/popper.min.js"></script>
+    <script type="text/javascript" src="/MDB/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/MDB/js/mdb.min.js"></script>
+    <!-- MDBootstrap Datatables  -->
+    <script type="text/javascript" src="/MDB/js/addons/datatables2.min.js"></script>
+
+    <script>
+        $(document).ready(function () {                
+            $("#dtCI").DataTable();
+        });
+    </script>
+    @endcan
 </body>
 </html>

@@ -45,7 +45,7 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-222222
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     33333<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -78,6 +78,6 @@
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
+    </div>    
 </body>
 </html>

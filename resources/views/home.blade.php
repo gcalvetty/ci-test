@@ -26,7 +26,8 @@
             <div class="card border-success mb-3">
                 <div class="card-header">Show USER</div>
                 <div class="card-body text-primary">
-                    <table class="table table-striped">
+                    <div class="table-responsive">
+                    <table id="dtCI" class="table table-striped">
                         <thead>
                           <tr>
                             <th scope="col">ID</th>
@@ -37,7 +38,6 @@
                             <th scope="col">Fecha de Nac.</th>
                             <th scope="col">Cod. Ciudad</th>
                             <th scope="col">Acciones</th>
-
                           </tr>
                         </thead>
                         <tbody>                          
@@ -54,7 +54,20 @@
                             </tr>  
                             @endforeach                                                   
                         </tbody>
-                      </table>
+                        <tfoot>
+                            <tr>
+                              <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Cedula</th>
+                            <th scope="col">Celular</th>
+                            <th scope="col">Fecha de Nac.</th>
+                            <th scope="col">Cod. Ciudad</th>
+                            <th scope="col">Acciones</th>   
+                            </tr>
+                          </tfoot>
+                      </table>                
+                    </div>
                 </div>
             </div>
         </div>

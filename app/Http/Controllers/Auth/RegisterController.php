@@ -90,7 +90,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Reidrect to Admin
+     * Redirect to Admin
      */
     public function register(Request $request)
     {
