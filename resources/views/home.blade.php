@@ -50,7 +50,11 @@
                                 <td>{{ $user->celular}}</td>
                                 <td>{{ $user->fec_nac}}</td>
                                 <td>{{ $user->cod_ciudad}}</td>
-                                <td><a href="{{ route('edit-user',$user->id)}}" class="btn btn-primary btn-lg " role="button" aria-disabled="true">Edit</a>  </td>
+                                <td>
+                                    <a href="{{ route('edit-user',$user->id)}}" class="btn btn-primary btn-lg " role="button" aria-disabled="true">
+                                        <i class="bi bi-pencil-fill"></i> Edit
+                                    </a>
+                                </td>
                             </tr>  
                             @endforeach                                                   
                         </tbody>

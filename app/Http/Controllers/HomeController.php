@@ -37,6 +37,8 @@ class HomeController extends Controller
     public function edit(Request $request)
     {
         $userAux = User::find($request->id);        
-        return view('auth.edit',);
+        return view('auth.edit',[
+            'userEdit' => $userAux,
+        ]);
     }
 }
