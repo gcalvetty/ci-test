@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://gecndev.com/img/ico-txt.svg" width="400"></a></p>
+<p align="center"><a href="https://gecndev.com" target="_blank"><img src="https://gecndev.com/img/ico-txt.svg" width="400"></a></p>
 
 
 # LARAVEL - TEST "FullStack DEVELOPER"
