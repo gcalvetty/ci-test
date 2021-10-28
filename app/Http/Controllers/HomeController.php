@@ -24,18 +24,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
-        $userReg = User::all();       
+
+        $userReg = User::all();
         return view('home', [
             'userReg' => $userReg,
         ]);
-
     }
     /**
      * ---- Edit USER ----
      */
 
-    public function edit(Request $request){
-        return view('auth.edit');
+    public function edit(Request $request)
+    {
+        $userAux = User::find($request->id);        
+        return view('auth.edit',);
     }
 }
