@@ -6,7 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'TEST CI') }}</title>
+    <title>{{ config('app.name', 'TEST CI') }} @yield('TitlePag')</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -15,6 +15,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
     <!-- MDBootstrap Datatables  -->    
     <link href="{{ asset('MDB/css/addons/datatables2.min.css') }}" rel="stylesheet">
 </head>
@@ -43,9 +44,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
-                            @endif
-
-                            
+                            @endif                            
                         @else
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
@@ -88,25 +87,26 @@
             @endcan 
             @can('usu_user')
                 @yield('content-user')
-            @endcan    
+            @endcan
         </main>
     </div>
-    @can('usu_adm')
     <script type="text/javascript" src="/MDB/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/MDB/js/popper.min.js"></script>
     <script type="text/javascript" src="/MDB/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/MDB/js/mdb.min.js"></script>
-    <!-- MDBootstrap Datatables  -->
-    <script type="text/javascript" src="/MDB/js/addons/datatables2.min.js"></script>
+    
+    @can('usu_adm')    
+        <script type="text/javascript" src="/MDB/js/popper.min.js"></script>        
+        <script type="text/javascript" src="/MDB/js/mdb.min.js"></script>
+        <!-- MDBootstrap Datatables  -->
+        <script type="text/javascript" src="/MDB/js/addons/datatables2.min.js"></script>
 
-    <script>
-        $(document).ready(function () {                
-            $("#dtCI").DataTable();
-            $('#paginationNumbers').DataTable({
-                "pagingType": "simple_numbers"
+        <script>
+            $(document).ready(function () {                
+                $("#dtCI").DataTable();
+                $('#paginationNumbers').DataTable({
+                    "pagingType": "simple_numbers"
+                });
             });
-        });
-    </script>
+        </script>
     @endcan
 </body>
 </html>

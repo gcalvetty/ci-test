@@ -1,4 +1,8 @@
 @extends('layouts.app')
+@section('TitlePag','| Edit User')
+@section('message')   
+    @include('layouts.partials.message-content')
+@endsection
 
 @section('content')
 <div class="container">
@@ -6,11 +10,12 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Edit USER') }}</div>
-
+                
                 <div class="card-body">
-                    <form method="POST" action="">
+                     
+                    <form method="POST" action="{{ route('update-user', $userEdit->id) }}">
                         @csrf
-
+                        {{ method_field('PUT') }}
                         <div class="form-group row">
                             <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
 
@@ -29,7 +34,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $userEdit->email }}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $userEdit->email }}" required autocomplete="email" disabled>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -99,16 +104,18 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <a href="{{ route('home')}}" class="btn btn-danger">
-                                    {{ __('Cancel') }}
+                                <a href="{{ route('home') }}" class="btn btn-danger">
+                                    <i class="bi bi-x-square"></i> {{ __('Cancel') }}
                                 </a>
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Save') }}
+                                    <i class="bi bi-save"></i> {{ __('Save') }}
                                 </button>
                             </div>                            
                         </div>
                     </form>
+                    
                 </div>
+                @yield('message')
             </div>
         </div>
     </div>

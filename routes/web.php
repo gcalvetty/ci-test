@@ -1,4 +1,7 @@
 <?php
+
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserGECNController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,9 +22,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-/*
- * ---- Edit USER --- 
- */
-Route::get('/edit-user/{id}', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit-user')->where(['id-user' => '[0-9]+']);
+
+Route::group(['middleware' => 'Grp_adm',  'prefix'     => 'admin', 'namespace'  => 'Admin', ], function () {
+    /*
+    * ---- Edit USER --- 
+    */
+    Route::get('/edit-user/{id}', [UserGECNController::class, 'edit'])->name('edit-user')->where(['id' => '[0-9]+']);
+
+    /*
+    * ---- Update USER --- 
+    */
+    Route::put('/edit-user/{id}', [UserGECNController::class, 'update'])->name('update-user')->where(['id' => '[0-9]+']);
+    
+});

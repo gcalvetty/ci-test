@@ -52,7 +52,7 @@
                                 <td>{{ $user->cod_ciudad}}</td>
                                 <td>
                                     <a href="{{ route('edit-user',$user->id)}}" class="btn btn-primary btn-lg " role="button" aria-disabled="true">
-                                        <i class="bi bi-pencil-fill"></i> Edit
+                                        <i class="bi bi-pencil-square"></i> {{ __('Edit') }}
                                     </a>
                                 </td>
                             </tr>  
