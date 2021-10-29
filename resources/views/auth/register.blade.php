@@ -124,8 +124,11 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
+                                <a href="{{ route('home') }}" class="btn btn-danger">
+                                    <i class="bi bi-x-square"></i> {{ __('Cancel') }}
+                                </a>
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    <i class="bi bi-person-plus"></i> {{ __('Register') }}
                                 </button>
                             </div>
                         </div>
